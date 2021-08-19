@@ -1,7 +1,7 @@
 
   Feature: Add Event
-
-   Scenario Outline : Users can access the "Add Event" page from the "General Information" page in the Vehicles sub-module
+    @wip
+   Scenario Outline: Users can access the "Add Event" page from the "General Information" page in the Vehicles sub-module
 
       Given the user is on the login page
        When the user logged in as "<userType>"

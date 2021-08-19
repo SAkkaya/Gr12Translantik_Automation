@@ -10,9 +10,9 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports",
                 "rerun:target/rerun.txt" },
         features = "src/test/resources/features",
-        glue = "com/translantik/step_definitions",
-        dryRun = false,
-        tags = "@TRANS-556"
+        glue = "com/translantik/stepDefs",
+        dryRun = true,
+        tags = "@wip"
         //      tags = "@wip and not @logout"
 )
 
