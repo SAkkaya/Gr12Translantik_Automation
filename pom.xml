@@ -8,9 +8,104 @@
     <artifactId>AddEventFeature</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>   <!--removes all warnings under project showed up -->
     </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <!-- cucumber and junit has to be matched  -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>5.7.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->          <!--soft assert-->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.18.1</version>
+
+        </dependency>
+
+    </dependencies>
+
+    <!-- https://github.com/damianszczepanik/maven-cucumber-reporting-->
+
+    <!-- I have 2 plugings at the bottom-->
+    <!-- 1st plugin finds CukesRunner file and execute this file, when you trigger Maven verify  **/*CukesRunner.java (stars means look anywhere, anyfolder for Cukesrunner -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <parallel>methods</parallel>       <!-- this 2 lines make parallel test execution ready-->
+                    <useUnlimitedThreads>true</useUnlimitedThreads> <!-- this 2 lines make parallel test execution ready-->
+
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <runOrder>Alphabetical</runOrder>    <!--run with alphabetical order so first CukesRuner then FailedTestRuuner will run-->
+                    <includes>
+                        <include>**/*CukesRunner.java</include>
+                        <!--          <include>**/*FailedTestRunner.java</include>  -->
+                    </includes>
+                </configuration>
+            </plugin>
+
+            <!-- 2nd pluging responsible for create a report, pluging takes all information of this report from json file
+            that we made cucumber to create that file by changing the settings on CukesRunner file  by adding ==> plugin = {"json:target/cucumber.json"}  -->
+
+
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.0.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>     <!-- this lines creates your report) -->
+                        <phase>verify</phase>     <!-- only execute if it verify phase then generate report) -->
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>Cucumber HTML Reports</projectName>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <inputDirectory>${project.build.directory}</inputDirectory>
+                            <jsonFiles>
+                                <param>**/cucumber*.json</param>  <!-- this lines reads the json file and takes the parameters starts with cucumber and send to report( to create your report) -->
+                            </jsonFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
