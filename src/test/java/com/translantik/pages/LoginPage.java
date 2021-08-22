@@ -1,7 +1,7 @@
 package com.translantik.pages;
 
-import com.translantik.utils.BrowserUtils;
-import com.translantik.utils.Driver;
+import com.translantik.utilities.BrowserUtils;
+import com.translantik.utilities.Driver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,16 +37,16 @@ public class LoginPage {
         password.sendKeys(passwordStr);
         submit.click();
 
-        if (userName.getText().isEmpty() && password.getText().isEmpty()){
-            String  message1=password.getAttribute("validationMessage");
-            String  message2=userName.getAttribute("validationMessage");
-            if (message1.isEmpty()){
-                emptyMessage=message2;
-            }else{
-                emptyMessage=message1;
-            }
-
-        }
+//        if (userName.getText().isEmpty() && password.getText().isEmpty()){
+//            String  message1=password.getAttribute("validationMessage");
+//            String  message2=userName.getAttribute("validationMessage");
+//            if (message1.isEmpty()){
+//                emptyMessage=message2;
+//            }else{
+//                emptyMessage=message1;
+//            }
+//
+//        }
 
     }
 

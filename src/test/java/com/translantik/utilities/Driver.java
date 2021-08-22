@@ -1,4 +1,4 @@
-package com.translantik.utils;
+package com.translantik.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Platform;

@@ -1,7 +1,7 @@
 package com.translantik.pages;
 
-import com.translantik.utils.BrowserUtils;
-import com.translantik.utils.Driver;
+import com.translantik.utilities.BrowserUtils;
+import com.translantik.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -49,6 +49,8 @@ public class FleetVehiclePage extends BasePage {
     @FindBy(css = " tbody tr")
     public WebElement firstRowAfterFiltering;
 
+    @FindBy(xpath = "(//tbody/tr)[1]")
+    public WebElement firstRowCar;
 
 
     public WebElement getdataColumns(String dataColumns){

@@ -1,7 +1,7 @@
 package com.translantik.pages;
 
-import com.translantik.utils.BrowserUtils;
-import com.translantik.utils.Driver;
+import com.translantik.utilities.BrowserUtils;
+import com.translantik.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -92,8 +92,8 @@ public abstract class BasePage {
      * @param module
      */
         public void navigateToModule(String tab, String module) {
-        String tabLocator = "//span[normalize-space()='" + tab + "' and contains(@class, 'title title-level-1')]";
-        String moduleLocator = "//span[normalize-space()='" + module + "' and contains(@class, 'title title-level-2')]";
+            String tabLocator = "(//span[contains(.,'" + tab + "')])[1]";
+            String moduleLocator = "//span[.='" + module + "']";
         try {
             WebElement tabElement = Driver.get().findElement(By.xpath(tabLocator));
             new Actions(Driver.get()).moveToElement(tabElement).pause(200).build().perform();

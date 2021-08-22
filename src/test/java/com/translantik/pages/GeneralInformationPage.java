@@ -1,3 +1,4 @@
+
 package com.translantik.pages;
 
 import org.openqa.selenium.By;
@@ -11,6 +12,13 @@ public class GeneralInformationPage extends BasePage{
 
     public WebDriver driver;
 
+    @FindBy(xpath = "//div[@class='pull-left btn-group icons-holder']/a/i")
+    public WebElement addEventButton;
+
+    @FindBy (xpath = "//span[text()='General Information']")
+    public WebElement titleGenInforPage;
+
+
     @FindBy(xpath = "//div[@class='pull-left btn-group icons-holder']/a")
     public List<WebElement>buttons;
 
@@ -22,9 +30,6 @@ public class GeneralInformationPage extends BasePage{
 
     @FindBy(xpath = "//div[@class='control-group attribute-row']/div/div")
     public List<WebElement> carInfo;
-
-    @FindBy(xpath = "//div[@class='pull-left btn-group icons-holder']/a/i")
-    public WebElement addEventButton;
 
     @FindBy(xpath = "//h5/span")
     public WebElement pageHeader;
@@ -63,7 +68,6 @@ public class GeneralInformationPage extends BasePage{
         driver.findElement(By.cssSelector("[data-value='"+method+"']")).click();
         filterValue.sendKeys(value);
     }
-
 
 
 
