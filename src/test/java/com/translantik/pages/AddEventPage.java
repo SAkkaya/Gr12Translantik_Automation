@@ -1,6 +1,6 @@
 package com.translantik.pages;
 
-public class AddEventPage {
+public class AddEventPage extends BasePage {
 
 
 
