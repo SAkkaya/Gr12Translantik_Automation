@@ -67,7 +67,7 @@ public class TRANS_537stepDefs {
 
     @Then("the user can see at least below {string}")
     public void the_user_can_see_at_least_below(List<String> methods) {
-        List<String> MethodList = new ArrayList<String>(generalInformationPage.DriverDropDownMenuList);
+        List<String> MethodList = new ArrayList<String>(new GeneralInformationPage().DriverDropDownMenuList);
 
         for (String s : MethodList) {
 ///KOD YAZILACAK
@@ -107,4 +107,8 @@ public class TRANS_537stepDefs {
         generalInformationPage.sendValueAndFilter(value,method);
     }
 
+
+    @Then("the user can see at least following methods")
+    public void theUserCanSeeAtLeastFollowingMethods() {
+    }
 }
