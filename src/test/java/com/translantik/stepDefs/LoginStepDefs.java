@@ -1,9 +1,9 @@
 package com.translantik.stepDefs;
 
 import com.translantik.pages.LoginPage;
-import com.translantik.utils.BrowserUtils;
-import com.translantik.utils.ConfigurationReader;
-import com.translantik.utils.Driver;
+import com.translantik.utilities.BrowserUtils;
+import com.translantik.utilities.ConfigurationReader;
+import com.translantik.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -54,7 +54,7 @@ public class LoginStepDefs {
         String username ="", password="" ;
 
         switch (userType){
-            case "storeManager" :
+            case "store manager" :
                 username = ConfigurationReader.get("sales_manager_username");
                 password = ConfigurationReader.get("sales_manager_password");
                 break ;
@@ -62,7 +62,7 @@ public class LoginStepDefs {
                 username = ConfigurationReader.get("driver_username");
                 password = ConfigurationReader.get("driver_password");
                 break;
-            case "salesManager" :
+            case "sales manager" :
                 username = ConfigurationReader.get("store_manager_username");
                 password = ConfigurationReader.get("store_manager_password");
                 break;

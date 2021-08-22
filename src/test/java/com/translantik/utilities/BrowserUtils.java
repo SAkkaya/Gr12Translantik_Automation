@@ -1,4 +1,4 @@
-package com.translantik.utils;
+package com.translantik.utilities;
 
 import org.junit.Assert;
 import org.openqa.selenium.*;

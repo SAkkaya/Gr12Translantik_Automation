@@ -1,4 +1,4 @@
-package com.translantik.utils;
+package com.translantik.utilities;
 
 import java.io.FileInputStream;
 import java.util.Properties;
