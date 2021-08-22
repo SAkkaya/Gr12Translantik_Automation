@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt" },
         features = "src/test/resources/features",
         glue = "com/translantik/stepDefs",
-        dryRun = true,
-        tags = "@wip"
+        dryRun = false,
+        tags = "@TRANS-537"
         //      tags = "@wip and not @logout"
 )
 
