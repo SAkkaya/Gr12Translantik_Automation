@@ -3,9 +3,9 @@ package com.translantik.stepDefs;
 import com.translantik.pages.DashboardPage;
 import com.translantik.pages.GeneralInformationPage;
 import com.translantik.pages.LoginPage;
-import com.translantik.utils.BrowserUtils;
-import com.translantik.utils.ConfigurationReader;
-import com.translantik.utils.Driver;
+import com.translantik.utilities.BrowserUtils;
+import com.translantik.utilities.ConfigurationReader;
+import com.translantik.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
@@ -65,15 +65,6 @@ public class TRANS_537stepDefs {
         generalInformationPage.DriverDropDownMenu.click();
     }
 
-    @Then("the user can see at least below {string}")
-    public void the_user_can_see_at_least_below(List<String> methods) {
-        List<String> MethodList = new ArrayList<String>(new GeneralInformationPage().DriverDropDownMenuList);
-
-        for (String s : MethodList) {
-///KOD YAZILACAK
-        }
-
-    }
 
     @Given("The user is on the Vehicles Pages")
     public void the_user_is_on_the_Vehicles_Pages(String tab, String module) {
