@@ -37,6 +37,7 @@ public class addEventsStep {
         Assert.assertEquals(expectedTitle, new GeneralInformationPage().titleGenInforPage.getText());
         // added
         //aded 2
+        //added from master
 
     }
 
