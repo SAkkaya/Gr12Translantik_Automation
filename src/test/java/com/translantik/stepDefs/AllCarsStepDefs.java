@@ -13,12 +13,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 public class AllCarsStepDefs {
-    @When("the user navigates to {string} {string}")
-    public void the_user_navigates_to(String tab, String module) {
-        BrowserUtils.waitFor(7);
-        new DashboardPage().navigateToModule(tab,module);
-        BrowserUtils.waitFor(5);
-    }
+//    @When("the user navigates to {string} {string}")
+//    public void the_user_navigates_to(String tab, String module) {
+//        BrowserUtils.waitFor(7);
+//        new DashboardPage().navigateToModule(tab,module);
+//        BrowserUtils.waitFor(5);
+//    }
 
     @Then("User should see the table  of vehicle information")
     public void user_should_see_the_table_of_vehicle_information() {

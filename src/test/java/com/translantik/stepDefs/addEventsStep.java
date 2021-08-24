@@ -39,6 +39,7 @@ public class addEventsStep {
         BrowserUtils.waitForVisibility(new GeneralInformationPage().titleGenInforPage,3);
         Assert.assertEquals(expectedTitle, new GeneralInformationPage().titleGenInforPage.getText());
 
+
     }
 
 
