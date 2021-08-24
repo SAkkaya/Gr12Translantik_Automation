@@ -30,19 +30,6 @@ public class Hooks {
         Driver.closeDriver();
     }
 
-    @Before("@calculator")
-    public void setUpCalculator(){
-        System.out.println("Running @Before code only scenario with @calculator tag");
-    }
-
-    @After("@calculator")
-    public void tearDownCalculator(){
-        System.out.println("Running @After code only scenario with @calculator tag");
-    }
-
-
-
-
 
 }
 
