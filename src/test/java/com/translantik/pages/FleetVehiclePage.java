@@ -136,6 +136,28 @@ public class FleetVehiclePage extends BasePage {
     @FindBy(xpath = "//label[contains(text(),'Total of')]")
     public WebElement totalRecordings;
 
+    @FindBy(xpath = "//a[.='...']")
+    public WebElement threeDot;
+
+    @FindBy(xpath = "//i[@class='fa-trash-o hide-text']")
+    public WebElement deleteButton;
+
+    @FindBy(css = ".ok")
+    public WebElement confirmDelete;
+
+    @FindBy(xpath = "//div[@class='message']")
+    public WebElement confirmationMessage;
+
+    @FindBy(xpath = "//tbody/tr/td[2]")
+    public WebElement firstCarOnTable;
+
+    @FindBy(css = ".remove-button")
+    public WebElement removeButton;
+
+
+
+
+
     @FindBy(xpath = "(//button[@data-toggle='dropdown'])[1]")
     public WebElement subFilter;
 
