@@ -9,6 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class addEventsStep {
@@ -59,10 +60,19 @@ public class addEventsStep {
     public void compulsory_fields_are_as_below(List<String> expectedCompulsoryFields) {
 
         List<String> actualCompulsoryFieldsText =  BrowserUtils.getElementsText(new AddEventPage().actualCompulsoryFields);
-        System.out.println("expectedCompulsoryFields = " + expectedCompulsoryFields);
-        System.out.println("actualCompulsoryFieldsText = " + actualCompulsoryFieldsText);
+        List<String> newActualFields = new ArrayList<>();
+        for (String each : actualCompulsoryFieldsText) {
+            each= each.substring(0,each.length()-1);
+//            each=each.replace("*", "");
+            newActualFields.add(each);
+            System.out.println("each = " + each);
+        }
 
-        Assert.assertEquals(expectedCompulsoryFields,actualCompulsoryFieldsText);
+
+        System.out.println("expectedCompulsoryFields = " + expectedCompulsoryFields);
+        System.out.println("newActualFields = " + newActualFields);
+
+        Assert.assertEquals(expectedCompulsoryFields,newActualFields);
     }
 
 
