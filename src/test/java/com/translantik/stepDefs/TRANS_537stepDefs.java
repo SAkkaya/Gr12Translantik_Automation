@@ -23,35 +23,35 @@ public class TRANS_537stepDefs {
         Driver.get().get(ConfigurationReader.get("url"));
     }
 
-    @Given("the user logged in as {string}")
-    public void the_user_logged_in_as(String userType) {
+//    @Given("the user logged in as {string}")
+//    public void the_user_logged_in_as(String userType) {
+//
+//        //based on input enter that user information
+//        String username = null;
+//        String password = null;
+//
+//        if (userType.equals("driver")) {
+//            username = ConfigurationReader.get("driver_username");
+//            password = ConfigurationReader.get("driver_password");
+//        } else if (userType.equals("sales manager")) {
+//            username = ConfigurationReader.get("sales_manager_username");
+//            password = ConfigurationReader.get("sales_manager_password");
+//        } else if (userType.equals("store manager")) {
+//            username = ConfigurationReader.get("store_manager_username");
+//            password = ConfigurationReader.get("store_manager_password");
+//        } else if (userType.equals("Sales Manager")) {
+//            username = "salesmanager101";
+//            password = "UserUser123";
+//        }
+//        //send username and password and login
+//        new LoginPage().login(username, password);
+//    }
 
-        //based on input enter that user information
-        String username = null;
-        String password = null;
-
-        if (userType.equals("driver")) {
-            username = ConfigurationReader.get("driver_username");
-            password = ConfigurationReader.get("driver_password");
-        } else if (userType.equals("sales manager")) {
-            username = ConfigurationReader.get("sales_manager_username");
-            password = ConfigurationReader.get("sales_manager_password");
-        } else if (userType.equals("store manager")) {
-            username = ConfigurationReader.get("store_manager_username");
-            password = ConfigurationReader.get("store_manager_password");
-        } else if (userType.equals("Sales Manager")) {
-            username = "salesmanager101";
-            password = "UserUser123";
-        }
-        //send username and password and login
-        new LoginPage().login(username, password);
-    }
-
-    @When("the user navigates to {string} {string}")
-    public void the_user_navigates_to(String tab, String module) {
-
-        new DashboardPage().navigateToModule(tab, module);
-    }
+//    @When("the user navigates to {string} {string}")
+//    public void the_user_navigates_to(String tab, String module) {
+//
+//        new DashboardPage().navigateToModule(tab, module);
+//    }
 
     @When("the user click manage {string} and {string} checkbox")
     public void the_user_click_manage_and_checkbox(String string, String string2) {

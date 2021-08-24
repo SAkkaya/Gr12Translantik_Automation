@@ -12,7 +12,7 @@ public class GeneralInformationPage extends BasePage{
 
     public WebDriver driver;
 
-    @FindBy(xpath = "//div[@class='pull-left btn-group icons-holder']/a/i")
+    @FindBy(css = "[title='Add an event to this record']")
     public WebElement addEventButton;
 
     @FindBy (xpath = "//span[text()='General Information']")

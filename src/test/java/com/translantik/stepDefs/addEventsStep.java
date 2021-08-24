@@ -1,5 +1,6 @@
 package com.translantik.stepDefs;
 
+import com.translantik.pages.AddEventPage;
 import com.translantik.pages.DashboardPage;
 import com.translantik.pages.FleetVehiclePage;
 import com.translantik.pages.GeneralInformationPage;
@@ -7,6 +8,8 @@ import com.translantik.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+
+import java.util.List;
 
 public class addEventsStep {
 
@@ -23,10 +26,10 @@ public class addEventsStep {
     @When("the user click on any car information row")
     public void the_user_click_on_any_car_information_row() {
 
-
          FleetVehiclePage fleetVehiclePage = new FleetVehiclePage();
-         BrowserUtils.waitFor(5);
+        BrowserUtils.waitFor(5);
          fleetVehiclePage.firstRowCar.click();
+
 
     }
 
@@ -35,11 +38,32 @@ public class addEventsStep {
 
         BrowserUtils.waitForVisibility(new GeneralInformationPage().titleGenInforPage,3);
         Assert.assertEquals(expectedTitle, new GeneralInformationPage().titleGenInforPage.getText());
-        // added
-        //aded 2
 
     }
 
+
+    @Then("Driver should not able to click on AddEvent button")
+    public void driver_should_not_able_to_click_on_AddEvent_button() {
+        Assert.assertFalse("Add Event is enabled", new GeneralInformationPage().addEventButton.isEnabled());
+
+    }
+
+    @When("the user click on AddEvent button")
+    public void the_user_click_on_AddEvent_button() {
+        GeneralInformationPage generalInformationPage = new GeneralInformationPage();
+        BrowserUtils.waitForClickablility(generalInformationPage.addEventButton, 5);
+        generalInformationPage.addEventButton.click();
+    }
+
+    @Then("compulsory fields are as below")
+    public void compulsory_fields_are_as_below(List<String> expectedCompulsoryFields) {
+
+        List<String> actualCompulsoryFieldsText =  BrowserUtils.getElementsText(new AddEventPage().actualCompulsoryFields);
+        System.out.println("expectedCompulsoryFields = " + expectedCompulsoryFields);
+        System.out.println("actualCompulsoryFieldsText = " + actualCompulsoryFieldsText);
+
+        Assert.assertEquals(expectedCompulsoryFields,actualCompulsoryFieldsText);
+    }
 
 
 
