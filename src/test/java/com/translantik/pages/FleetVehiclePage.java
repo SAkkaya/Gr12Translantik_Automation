@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FleetVehiclePage extends BasePage {
@@ -134,6 +135,30 @@ public class FleetVehiclePage extends BasePage {
 
     @FindBy(xpath = "//label[contains(text(),'Total of')]")
     public WebElement totalRecordings;
+
+    @FindBy(xpath = "(//button[@data-toggle='dropdown'])[1]")
+    public WebElement subFilter;
+
+    @FindBy(css = "[name='value']")
+    public WebElement subFilterBox1;
+    @FindBy(css = "[name='value_end']")
+    public WebElement subFilterBox2;
+    @FindBy(css = ".btn.btn-primary.filter-update")
+    public WebElement updateButton;
+
+    public WebElement getSubFilterType(String string){
+        WebElement element=Driver.get().findElement(By.xpath("//a[text()='"+string+"']"));
+        return element;
+    }
+
+    public List<Integer> getColumnValues(String string){
+        List<WebElement> elements =Driver.get().findElements(By.cssSelector("td[data-column-label='"+string+"']"));
+        List<Integer> values=new ArrayList<>();
+        for (WebElement element : elements) {
+            values.add(Integer.parseInt(element.getText()));
+        }
+        return values;
+    }
 
 
 }
