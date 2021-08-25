@@ -11,8 +11,8 @@ Feature:
 				    Examples:
 				      | userType      |
 				      | driver        |
-				      | store manager |
-				      | sales manager |
+				 #     | store manager |
+				 #     | sales manager |
   	#2-"You do not have permission to perform this action." message should be displayed if the driver attempts to delete a car.
 	@TRANS-588
 	Scenario: The driver attempts to delete a car
