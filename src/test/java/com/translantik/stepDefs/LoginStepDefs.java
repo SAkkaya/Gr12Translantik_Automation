@@ -51,6 +51,32 @@ public class LoginStepDefs {
 
     @When("the user logged in as {string}")
     public void theUserLoggedInAs(String userType) {
+        String username ="", password="" ;
+
+        switch (userType){
+            case "sales manager" :
+                username = ConfigurationReader.get("sales_manager_username");
+                password = ConfigurationReader.get("sales_manager_password");
+                break ;
+            case "driver" :
+                username = ConfigurationReader.get("driver_username");
+                password = ConfigurationReader.get("driver_password");
+                break;
+            case "store manager" :
+                username = ConfigurationReader.get("store_manager_username");
+                password = ConfigurationReader.get("store_manager_password");
+                break;
+
+            default:
+                System.out.println("UNKNOWN USER TYPE!!!");
+        }
+
+        LoginPage loginPage = new LoginPage() ;
+        loginPage.login(username, password);
+
+    }
+    @When("The user logged in as {string}")
+    public void theUserLoggedinAs(String userType) {
         Driver.get().get(ConfigurationReader.get("url"));
         String username ="", password="" ;
 
