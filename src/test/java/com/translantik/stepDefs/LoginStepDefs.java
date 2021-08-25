@@ -51,6 +51,7 @@ public class LoginStepDefs {
 
     @When("the user logged in as {string}")
     public void theUserLoggedInAs(String userType) {
+        Driver.get().get(ConfigurationReader.get("url"));
         String username ="", password="" ;
 
         switch (userType){
