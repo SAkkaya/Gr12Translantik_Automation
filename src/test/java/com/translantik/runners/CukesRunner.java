@@ -14,7 +14,6 @@ import org.junit.runner.RunWith;
         dryRun = false,
         tags = "@halil"
         //      tags = "@wip and not @logout"
-
 )
 
 public class CukesRunner {
