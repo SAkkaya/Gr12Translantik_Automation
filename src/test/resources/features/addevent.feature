@@ -48,5 +48,5 @@
       Examples:
 
         | userType      |
-        | sales manager |
         | store manager |
+        | sales manager |

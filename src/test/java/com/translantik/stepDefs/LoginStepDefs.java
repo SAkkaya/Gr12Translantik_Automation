@@ -54,7 +54,7 @@ public class LoginStepDefs {
         String username ="", password="" ;
 
         switch (userType){
-            case "store manager" :
+            case "sales manager" :
                 username = ConfigurationReader.get("sales_manager_username");
                 password = ConfigurationReader.get("sales_manager_password");
                 break ;
@@ -62,7 +62,7 @@ public class LoginStepDefs {
                 username = ConfigurationReader.get("driver_username");
                 password = ConfigurationReader.get("driver_password");
                 break;
-            case "sales manager" :
+            case "store manager" :
                 username = ConfigurationReader.get("store_manager_username");
                 password = ConfigurationReader.get("store_manager_password");
                 break;
