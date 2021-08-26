@@ -8,6 +8,7 @@ import com.translantik.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,8 @@ public class addEventsStep {
     public void the_user_click_on_any_car_information_row() {
 
          FleetVehiclePage fleetVehiclePage = new FleetVehiclePage();
-        BrowserUtils.waitFor(5);
-         fleetVehiclePage.firstRowCar.click();
+         BrowserUtils.clickWithWait(By.xpath("//table/tbody"),2);
+         //fleetVehiclePage.firstRowCar.click();
 
 
     }
