@@ -131,4 +131,6 @@ public abstract class BasePage {
 //        }
 //    }
 
+    @FindBy(xpath = "(//span[contains(.,'Fleet')])[1]")
+    public WebElement fleetTab;
 }
