@@ -54,7 +54,7 @@ Feature:
 		Examples:
 			| userType      |
 			| store manager |
-			| sales manager |
+		#	| sales manager |
 
 			#AC6- After deleting a car, "Car deleted" message should be displayed and the corresponding vehicle should be removed from the table
 	@TRANS-592
