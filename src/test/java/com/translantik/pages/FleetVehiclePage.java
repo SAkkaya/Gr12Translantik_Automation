@@ -9,7 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FleetVehiclePage extends BasePage {
@@ -50,7 +53,7 @@ public class FleetVehiclePage extends BasePage {
     @FindBy(css = " tbody tr")
     public WebElement firstRowAfterFiltering;
 
-    @FindBy(xpath = "(//tbody/tr)[1]")
+    @FindBy(xpath = "//table/tbody")
     public WebElement firstRowCar;
 
 
@@ -160,6 +163,204 @@ public class FleetVehiclePage extends BasePage {
         return values;
     }
 
+    public void checkFilteredDate(String column, String method) throws ParseException {
+        String startDateData = "Aug 20, 2021";
+        String endDateData = "Nov 2, 2021";
+        if (column.equals("Immatriculation Date")) {
+            WebElement startDate = Driver.get().findElement(By.cssSelector("div:nth-of-type(8) .filter-start-date [placeholder='Choose a date']"));
+            WebElement endDate = Driver.get().findElement(By.cssSelector("div:nth-of-type(8) .filter-end-date [placeholder='Choose a date']"));
+            WebElement upddateBtn = Driver.get().findElement(By.cssSelector("div:nth-of-type(8) > .filter-criteria .btn"));
+            switch (method) {
+                case "between":
+                    startDate.sendKeys(startDateData);
+                    endDate.sendKeys(endDateData);
+                    upddateBtn.click();
+                    break;
+
+                case "not between":
+                    startDate.sendKeys(startDateData);
+                    endDate.sendKeys(endDateData);
+                    upddateBtn.click();
+                    break;
+
+                case "later than":
+                    startDate.sendKeys(startDateData);
+                    upddateBtn.click();
+                    break;
+
+                case "earlier than":
+                    endDate.sendKeys(endDateData);
+                    upddateBtn.click();
+                    break;
+
+                case "equals":
+                    startDate.sendKeys(startDateData);
+                    upddateBtn.click();
+                    break;
+
+                case "not equals":
+                    endDate.sendKeys(endDateData);
+                    upddateBtn.click();
+                    break;
+
+            }
+
+        } else if (column.equals("First Contract Date")) {
+            WebElement startDate2 = Driver.get().findElement(By.cssSelector("div:nth-of-type(9) .filter-start-date [placeholder='Choose a date']"));
+            WebElement endDate2 = Driver.get().findElement(By.cssSelector("div:nth-of-type(9) .filter-end-date [placeholder='Choose a date']"));
+            WebElement upddateBtn2 = Driver.get().findElement(By.cssSelector("div:nth-of-type(9) > .filter-criteria .btn"));
+
+            switch (method) {
+                case "between":
+                    startDate2.sendKeys(startDateData);
+                    endDate2.sendKeys(endDateData);
+                    upddateBtn2.click();
+                    waitUntilLoaderScreenDisappear();
+                    break;
+
+                case "not between":
+                    startDate2.sendKeys(startDateData);
+                    endDate2.sendKeys(endDateData);
+                    upddateBtn2.click();
+                    waitUntilLoaderScreenDisappear();
+                    break;
+                case "later than":
+                    startDate2.sendKeys(startDateData);
+                    upddateBtn2.click();
+                    break;
+                case "earlier than":
+                    endDate2.sendKeys(endDateData);
+                    upddateBtn2.click();
+                    break;
+                case "equals":
+                    startDate2.sendKeys(startDateData);
+                    upddateBtn2.click();
+                    break;
+                case "not equals":
+                    endDate2.sendKeys(endDateData);
+                    upddateBtn2.click();
+                    break;
+            }
+        }
+
+        BrowserUtils.waitFor(2);
+
+        String checkTheFilterPath = "//table/tbody/tr/td[@data-column-label='" + column + "']";
+
+        List<WebElement> filteredOptions = Driver.get().findElements(By.xpath(checkTheFilterPath));
+
+        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
+
+        for (WebElement filteredOption : filteredOptions) {
+            switch (method) {
+                case "between": {
+                    Date date1 = sdf.parse(startDateData);
+                    Date date2 = sdf.parse(endDateData);
+                    Date date3 = sdf.parse(filteredOption.getText());
+
+                    System.out.println("date1 : " + sdf.format(date1));
+                    System.out.println("date2 : " + sdf.format(date2));
+                    System.out.println("date3 : " + sdf.format(date3));
+
+                    if (date3.after(date1) && date3.before(date2) && filteredOption.isDisplayed()) {
+                        System.out.println("PASS");
+                        Assert.assertTrue(true);
+                    } else {
+                        System.out.println("FAIL");
+                        Assert.assertTrue(date3.after(date1) && date3.before(date2) && filteredOption.isDisplayed());
+                    }
+
+                    break;
+                }
+                case "not between": {
+                    Date date1 = sdf.parse(startDateData);
+                    Date date2 = sdf.parse(endDateData);
+                    Date date3 = sdf.parse(filteredOption.getText());
+
+                    System.out.println("date1 : " + sdf.format(date1));
+                    System.out.println("date2 : " + sdf.format(date2));
+                    System.out.println("date3 : " + sdf.format(date3));
+
+                    if ((date3.before(date1) || date3.after(date2)) && filteredOption.isDisplayed()) {
+                        System.out.println("PASS");
+                        Assert.assertTrue(true);
+                    } else {
+                        System.out.println("FAIL");
+                        Assert.assertTrue((date3.before(date1) || date3.after(date2)) && filteredOption.isDisplayed());
+                    }
+                    break;
+                }
+                case "later than": {
+                    Date date1 = sdf.parse(startDateData);
+                    Date date2 = sdf.parse(filteredOption.getText());
+
+                    System.out.println("date1 : " + sdf.format(date1));
+                    System.out.println("date2 : " + sdf.format(date2));
+
+                    if (date2.after(date1) && filteredOption.isDisplayed()) {
+                        System.out.println("PASS");
+                        Assert.assertTrue(true);
+                    } else {
+                        System.out.println("FAIL");
+                        Assert.assertTrue(date2.after(date1) && filteredOption.isDisplayed());
+                    }
+
+                    break;
+                }
+                case "earlier than": {
+                    Date date1 = sdf.parse(endDateData);
+                    Date date2 = sdf.parse(filteredOption.getText());
+
+                    System.out.println("date1 : " + sdf.format(date1));
+                    System.out.println("date2 : " + sdf.format(date2));
+
+                    if (date2.before(date1) && filteredOption.isDisplayed()) {
+                        System.out.println("PASS");
+                        Assert.assertTrue(true);
+                    } else {
+                        System.out.println("FAIL");
+                        Assert.assertTrue(date2.before(date1) && filteredOption.isDisplayed());
+                    }
+
+                    break;
+                }
+                case "equals": {
+                    Date date1 = sdf.parse(startDateData);
+                    Date date2 = sdf.parse(filteredOption.getText());
+
+                    System.out.println("date1 : " + sdf.format(date1));
+                    System.out.println("date2 : " + sdf.format(date2));
+
+                    if (date2.equals(date1) && filteredOption.isDisplayed()) {
+                        System.out.println("PASS");
+                        Assert.assertTrue(true);
+                    } else {
+                        System.out.println("FAIL");
+                        Assert.assertTrue(date2.equals(date1) && filteredOption.isDisplayed());
+                    }
+
+                    break;
+                }
+                case "not equals": {
+                    Date date1 = sdf.parse(endDateData);
+                    Date date2 = sdf.parse(filteredOption.getText());
+
+                    System.out.println("date1 : " + sdf.format(date1));
+                    System.out.println("date2 : " + sdf.format(date2));
+
+                    if (!date2.equals(date1) && filteredOption.isDisplayed()) {
+                        System.out.println("PASS");
+                        Assert.assertTrue(true);
+                    } else {
+                        System.out.println("FAIL");
+                        Assert.assertTrue(!date2.equals(date1) && filteredOption.isDisplayed());
+                    }
+
+                    break;
+                }
+            }
+        }
+    }
 
 }
 
