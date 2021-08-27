@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class addEventsStep {
 
@@ -19,8 +20,18 @@ public class addEventsStep {
     public void the_user_navigates_to(String tabName, String moduleName) {
 
         DashboardPage dashboardPage = new DashboardPage();
-        dashboardPage.navigateToModule(tabName, moduleName);
-        new FleetVehiclePage().waitUntilLoaderScreenDisappear();
+        dashboardPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForPageToLoad(5);
+
+        try{
+            dashboardPage.addEventClose.click();
+            dashboardPage.navigateToModule(tabName, moduleName);
+            new FleetVehiclePage().waitUntilLoaderScreenDisappear();
+        }catch(NoSuchElementException exception){
+            System.out.println("Did not open the add event");
+            dashboardPage.navigateToModule(tabName, moduleName);
+            new FleetVehiclePage().waitUntilLoaderScreenDisappear();
+        }
 
     }
 
@@ -29,8 +40,9 @@ public class addEventsStep {
     public void the_user_click_on_any_car_information_row() {
 
          FleetVehiclePage fleetVehiclePage = new FleetVehiclePage();
-         BrowserUtils.clickWithWait(By.xpath("//table/tbody"),2);
-         //fleetVehiclePage.firstRowCar.click();
+       // BrowserUtils.clickWithWait(By.xpath("//li[text()='Employee Car'][1]"),2);
+        BrowserUtils.waitFor(5);
+         fleetVehiclePage.firstRowCar.click();
 
 
     }
@@ -38,8 +50,10 @@ public class addEventsStep {
     @Then("the user should be able to see the {string} page")
     public void the_user_should_be_able_to_see_the_page(String expectedTitle) {
 
-        BrowserUtils.waitForVisibility(new GeneralInformationPage().titleGenInforPage,3);
+       // BrowserUtils.waitForVisibility(new GeneralInformationPage().titleGenInforPage,3);
+        BrowserUtils.waitFor(3);
         Assert.assertEquals(expectedTitle, new GeneralInformationPage().titleGenInforPage.getText());
+
 
     }
 
@@ -59,14 +73,18 @@ public class addEventsStep {
 
     @Then("compulsory fields are as below")
     public void compulsory_fields_are_as_below(List<String> expectedCompulsoryFields) {
-
+        BrowserUtils.waitFor(7);
         List<String> actualCompulsoryFieldsText =  BrowserUtils.getElementsText(new AddEventPage().actualCompulsoryFields);
         List<String> newActualFields = new ArrayList<>();
-        for (String each : actualCompulsoryFieldsText) {
-            each= each.substring(0,each.length()-1);
-//            each=each.replace("*", "");
+     /*   for (String each : actualCompulsoryFieldsText) {
+          //  each= each.substring(0,each.length()-1);
+            each=each.replace("*", "");
             newActualFields.add(each);
             System.out.println("each = " + each);
+        }*/
+
+        for (int i =0; i <actualCompulsoryFieldsText.size() ; i++) {
+           newActualFields.add(actualCompulsoryFieldsText.get(i).replace("*",""));
         }
 
 

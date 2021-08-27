@@ -26,7 +26,7 @@
       Then Driver should not able to click on AddEvent button
 
 
-
+    @wips
     Scenario Outline: Compulsory fields
       Given the user is on the login page
       When the user logged in as "<userType>"
@@ -38,8 +38,8 @@
 
         | Title                  |
         | Owner                  |
-        | Organiser display name |
-        | Organiser email        |
+        | Organizer display name |
+        | Organizer email        |
         | Start                  |
         | End                    |
 
@@ -49,3 +49,4 @@
         | userType      |
         | store manager |
         | sales manager |
+
