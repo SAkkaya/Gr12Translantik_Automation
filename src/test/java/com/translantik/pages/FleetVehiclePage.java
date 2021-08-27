@@ -50,7 +50,7 @@ public class FleetVehiclePage extends BasePage {
     @FindBy(xpath = "//a[@class='action btn reset-action mode-text-only']")
     public WebElement resetButton;
 
-    @FindBy(css = " tbody tr")
+    @FindBy(css = "tbody tr")
     public WebElement firstRowAfterFiltering;
 
     @FindBy(xpath = "//table/tbody")
