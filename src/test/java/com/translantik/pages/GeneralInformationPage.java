@@ -55,6 +55,8 @@ public class GeneralInformationPage extends BasePage{
     @FindBy(css = "[name='value']")
     public WebElement filterValue;
 
+    @FindBy(xpath = "//div[@class='control-group attribute-row']")
+    public List<WebElement> generalIfoPageEvents;
 
 
     public void DriverDropDownSet(){
