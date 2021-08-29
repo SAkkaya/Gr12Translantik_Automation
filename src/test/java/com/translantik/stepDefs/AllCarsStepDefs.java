@@ -10,7 +10,10 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+
+
 
 public class AllCarsStepDefs {
 //    @When("the user navigates to {string} {string}")
@@ -75,5 +78,32 @@ public class AllCarsStepDefs {
         Assert.assertTrue(allCarsPage.totalPages.isDisplayed());
     }
 
-
+    @Then("the user select the {string} {string} filtering type")
+    public void theUserSelectTheFilteringType(String arg0, String arg1) {
+        new FleetVehiclePage().selectFilterType(arg0, arg1);
+    }
+    @Then("the user enters the informations {int} and {int}")
+    public void the_user_enters_the_informations_and(Integer int1, Integer int2) {
+        new FleetVehiclePage().subFilterBox1.sendKeys(String.valueOf(int1));
+        new FleetVehiclePage().subFilterBox2.sendKeys(String.valueOf(int2));
+        new FleetVehiclePage().updateButton.click();
+        new FleetVehiclePage().waitUntilLoaderScreenDisappear();
+    }
+    @Then("the user should see the correct results from {string} {string} {int} {int}")
+    public void the_user_should_see_the_correct_results_from(String string, String string2, Integer int1, Integer int2) {
+        new FleetVehiclePage().checkFilteringResults(string,string2,int1,int2);
+    }
+    @When("the user navigates2 to {string}, {string}")
+    public void the_user_navigates2_to(String tabName, String moduleName) {
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForPageToLoad(15);
+        try{
+            dashboardPage.addEventClose.click();
+        }catch (NoSuchElementException exception){
+            System.out.println("Did not open the add event");
+        }
+        dashboardPage.navigateToModule(tabName, moduleName);
+        new FleetVehiclePage().waitUntilLoaderScreenDisappear();
+    }
 }
