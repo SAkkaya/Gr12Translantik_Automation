@@ -75,7 +75,9 @@ public class FleetVehiclePage extends BasePage {
 
     public void methodFilter(String dataColumns) {
         new FleetVehiclePage().manageFilterSearchBox.sendKeys(dataColumns);
+        BrowserUtils.waitFor(2);
         new FleetVehiclePage().getdataColumns(dataColumns).click();
+        BrowserUtils.waitFor(2);
         new FleetVehiclePage().getColumnsFilterAll(dataColumns).click();
 
     }
@@ -360,6 +362,83 @@ public class FleetVehiclePage extends BasePage {
                 }
             }
         }
+    }
+    public void selectFilterType(String arg0, String arg1){
+        BrowserUtils.waitForPageToLoad(25);
+        BrowserUtils.waitForVisibility(filterButton,25);
+        BrowserUtils.waitForClickablility(filterButton,25);
+        BrowserUtils.waitFor(2);
+        filterButton.click();
+        BrowserUtils.waitForVisibility(manageFilters,25);
+        BrowserUtils.waitForClickablility(manageFilters,25);
+        manageFilters.click();
+        BrowserUtils.waitForVisibility(manageFilterSearchBox,25);
+        BrowserUtils.waitForClickablility(manageFilterSearchBox,25);
+        methodFilter(arg0);
+        BrowserUtils.waitForVisibility(subFilter,25);
+        BrowserUtils.waitForClickablility(subFilter,25);
+        subFilter.click();
+        BrowserUtils.waitForVisibility(getSubFilterType(arg1),25);
+        BrowserUtils.waitForClickablility(getSubFilterType(arg1),25);
+        getSubFilterType(arg1).click();
+    }
+    public void checkFilteringResults(String filter, String subFilter, Integer int1, Integer int2){
+        FleetVehiclePage fleetVehiclePage = new FleetVehiclePage();
+        List<Integer> columnValues = fleetVehiclePage.getColumnValues(filter);
+        switch (subFilter){
+            case "between":
+                for (Integer columnValue : columnValues) {
+                    Assert.assertTrue("Verify between",int1<=columnValue && int2>=columnValue);
+                }
+                break;
+            case "not between":
+                for (Integer columnValue : columnValues) {
+                    Assert.assertTrue("Verify not between",int1>columnValue || int2<columnValue);
+                }
+                break;
+            case "equals":
+                for (Integer columnValue : columnValues) {
+                    Assert.assertEquals("Verify equals",int1,columnValue);
+                }
+                break;
+            case "not equals":
+                for (Integer columnValue : columnValues) {
+                    Assert.assertNotEquals("Verify not equals",int1,columnValue);
+                }
+                break;
+            case "more than":
+                for (Integer columnValue : columnValues) {
+                    Assert.assertTrue("Verify more than",int1<columnValue);
+                }
+                break;
+            case "less than":
+                for (Integer columnValue : columnValues) {
+                    Assert.assertTrue("Verify less than",int1>columnValue);
+                }
+                break;
+            case "equals or more than":
+                for (Integer columnValue : columnValues) {
+                    Assert.assertTrue("Verify equals or more than",int1<=columnValue);
+                }
+                break;
+            case "equals or less than":
+                for (Integer columnValue : columnValues) {
+                    Assert.assertTrue("Verify equals or less than",int1>=columnValue);
+                }
+                break;
+            case "is empty":
+                Assert.assertTrue(columnValues.isEmpty());
+                break;
+            case "is not empty":
+                for (Integer columnValue : columnValues) {
+                    Assert.assertTrue("Verify is not empty",String.valueOf(columnValue).length()>0);
+                }
+                break;
+            default:
+                System.out.println("Invalid input");
+                break;
+        }
+
     }
 
 }
