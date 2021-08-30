@@ -11,14 +11,13 @@ Feature:
 				    Examples:
 				      | userType      |
 				      | driver        |
-				 #     | store manager |
-				 #     | sales manager |
+				      | store manager |
+				      | sales manager |
   	#2-"You do not have permission to perform this action." message should be displayed if the driver attempts to delete a car.
 	@TRANS-588
 	Scenario: The driver attempts to delete a car
 		Given The user logged in as "driver"
 		And the user navigates to "Fleet" "Vehicles"
-		When User hovers over on ... at the end of each row in the table
 		And User clicks on delete vehicle button
 		And User confirms delete by clicking yes
 		Then no permission message should be displayed

@@ -89,16 +89,16 @@ public class AllCarsStepDefs  {
         FleetVehiclePage fleetVehiclePage = new FleetVehiclePage();
         fleetVehiclePage.waitUntilLoaderScreenDisappear();
         DashboardPage dashboardPage = new DashboardPage();
-        BrowserUtils.waitFor(5);
+        BrowserUtils.waitForPageToLoad (5);
         //WebElement scrollArea = Driver.get().findElement(By.className("grid-scrollable-container scrollbar-is-visible"));
         //((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollLeft = arguments[0].offsetWidth", scrollArea);
 
         ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", fleetVehiclePage.threeDot);
-        Thread.sleep(500);
-        fleetVehiclePage.threeDot.click();
-        //Actions actions = new Actions(Driver.get());
+        BrowserUtils.waitFor (3);
+        Actions actions = new Actions(Driver.get());
         //actions.clickAndHold(fleetVehiclePage.threeDot).perform();
-        //actions.moveToElement(fleetVehiclePage.threeDot).perform();
+        actions.moveToElement(fleetVehiclePage.threeDot).perform();
+        actions.moveToElement(fleetVehiclePage.deleteButton);
         Thread.sleep(3000);
     }
 
@@ -111,9 +111,13 @@ public class AllCarsStepDefs  {
     @When("User clicks on delete vehicle button")
     public void user_clicks_on_delete_vehicle_button() {
         FleetVehiclePage fleetVehiclePage = new FleetVehiclePage();
-        fleetVehiclePage.waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitFor(4);
-        BrowserUtils.waitForClickablility(fleetVehiclePage.deleteButton,5);
+        DashboardPage dashboardPage = new DashboardPage();
+        BrowserUtils.waitForPageToLoad (5);
+        ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", fleetVehiclePage.threeDot);
+        BrowserUtils.waitFor (3);
+        Actions actions = new Actions(Driver.get());
+        actions.moveToElement(fleetVehiclePage.threeDot).perform();
+        actions.moveToElement(fleetVehiclePage.deleteButton);
         fleetVehiclePage.deleteButton.click();
 
 
