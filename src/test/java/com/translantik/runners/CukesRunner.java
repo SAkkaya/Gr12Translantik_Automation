@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
         glue = "com/translantik/stepDefs",
         dryRun = false,
         tags = "@wip"
+        dryRun = false,
         //      tags = "@wip and not @logout"
 
 )
