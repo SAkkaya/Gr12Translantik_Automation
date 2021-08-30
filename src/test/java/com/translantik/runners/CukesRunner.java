@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/translantik/stepDefs",
         dryRun = false,
-        tags = "@TRANS-575"
+        tags = "@halil"
         //      tags = "@wip and not @logout"
 
 )
