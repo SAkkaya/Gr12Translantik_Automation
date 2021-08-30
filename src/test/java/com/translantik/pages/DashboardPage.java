@@ -8,5 +8,7 @@ public class DashboardPage extends BasePage {
 @FindBy(css = ".ui-button")
     public WebElement addEventClose;
 
+    @FindBy(className = "oro-subtitle")
+    public WebElement dashboardTitle;
 
 }
