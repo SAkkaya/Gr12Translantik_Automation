@@ -12,9 +12,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/translantik/stepDefs",
         dryRun = false,
-        tags = "@halil"
+        tags = "@TRANS-533"
         //      tags = "@wip and not @logout"
-
 )
 
 public class CukesRunner {

@@ -15,6 +15,7 @@ public class Hooks {
     public void setUp(){
         System.out.println("Running @Before code - before each scenario");
         Driver.get().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        Driver.get().manage().window().maximize();
     }
 
     @After
