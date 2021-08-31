@@ -47,7 +47,6 @@ Feature:
 	Scenario Outline: Verify that Delete Confirmation pop up should be displayed when the user clicks on the delete button
 		Given The user logged in as "<userType>"
 		And the user navigates to "Fleet" "Vehicles"
-		And the user clicks on one of the cars in the table
 		When User clicks on delete vehicle button
 		Then delete confirmation pop up should be displayed
 		Examples:
