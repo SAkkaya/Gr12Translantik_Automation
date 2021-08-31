@@ -1,4 +1,4 @@
-@TRANS-533
+
 Feature:
 
 	#AC 1 - All users can see the delete option by hovering over ... on the table at the end of each row
