@@ -144,7 +144,7 @@ public class FleetVehiclePage extends BasePage {
     @FindBy(xpath = "//a[.='...']")
     public WebElement threeDot;
     //i[@class='fa-trash-o hide-text']
-    @FindBy(xpath = "//ul[@class='dropdown-menu dropdown-menuaction-cell launchers-dropdown-menu detach dropdown-menufloating']//i[@class='fa-trash-o hide-text']")
+    @FindBy(xpath = "//i[@class='fa-trash-o hide-text']")
     public WebElement deleteButton;
 
     @FindBy(css = ".ok")

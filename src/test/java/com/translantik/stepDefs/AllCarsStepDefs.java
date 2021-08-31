@@ -87,18 +87,17 @@ public class AllCarsStepDefs  {
     @When("User hovers over on ... at the end of each row in the table")
     public void user_hovers_over_on_at_the_end_of_each_row_in_the_table() throws InterruptedException {
         FleetVehiclePage fleetVehiclePage = new FleetVehiclePage();
-        fleetVehiclePage.waitUntilLoaderScreenDisappear();
         DashboardPage dashboardPage = new DashboardPage();
         BrowserUtils.waitFor(5);
         //WebElement scrollArea = Driver.get().findElement(By.className("grid-scrollable-container scrollbar-is-visible"));
         //((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollLeft = arguments[0].offsetWidth", scrollArea);
 
-        ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", fleetVehiclePage.threeDot);
+        //((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", fleetVehiclePage.threeDot);
         Thread.sleep(500);
-        fleetVehiclePage.threeDot.click();
-        //Actions actions = new Actions(Driver.get());
-        //actions.clickAndHold(fleetVehiclePage.threeDot).perform();
-        //actions.moveToElement(fleetVehiclePage.threeDot).perform();
+
+        Actions actions = new Actions(Driver.get());
+
+        actions.moveToElement(fleetVehiclePage.threeDot).perform();
         Thread.sleep(3000);
     }
 
@@ -109,10 +108,15 @@ public class AllCarsStepDefs  {
     }
 
     @When("User clicks on delete vehicle button")
-    public void user_clicks_on_delete_vehicle_button() {
+    public void user_clicks_on_delete_vehicle_button() throws InterruptedException {
         FleetVehiclePage fleetVehiclePage = new FleetVehiclePage();
-        fleetVehiclePage.waitUntilLoaderScreenDisappear();
-        BrowserUtils.waitFor(4);
+
+        DashboardPage dashboardPage = new DashboardPage();
+        BrowserUtils.waitFor(9);
+        Actions actions = new Actions(Driver.get());
+        actions.moveToElement(fleetVehiclePage.threeDot).perform();
+        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
         BrowserUtils.waitForClickablility(fleetVehiclePage.deleteButton,5);
         fleetVehiclePage.deleteButton.click();
 
@@ -139,7 +143,7 @@ public class AllCarsStepDefs  {
     @When("the user clicks on one of the cars in the table")
     public void the_user_clicks_on_one_of_the_cars_in_the_table() {
         FleetVehiclePage fleetVehiclePage = new FleetVehiclePage();
-        fleetVehiclePage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitFor(7);
         fleetVehiclePage.firstCarOnTable.click();
 
     }

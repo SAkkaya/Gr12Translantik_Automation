@@ -1,4 +1,4 @@
-
+@TRANS-533
 Feature:
 
 	#AC 1 - All users can see the delete option by hovering over ... on the table at the end of each row
@@ -11,15 +11,14 @@ Feature:
 				    Examples:
 				      | userType      |
 				      | driver        |
-				 #     | store manager |
-				 #     | sales manager |
+				      | store manager |
+				      | sales manager |
   	#2-"You do not have permission to perform this action." message should be displayed if the driver attempts to delete a car.
 	@TRANS-588
 	Scenario: The driver attempts to delete a car
 		Given The user logged in as "driver"
 		And the user navigates to "Fleet" "Vehicles"
-		When User hovers over on ... at the end of each row in the table
-		And User clicks on delete vehicle button
+		When User clicks on delete vehicle button
 		And User confirms delete by clicking yes
 		Then no permission message should be displayed
 
@@ -54,14 +53,13 @@ Feature:
 		Examples:
 			| userType      |
 			| store manager |
-		#	| sales manager |
+			| sales manager |
 
 			#AC6- After deleting a car, "Car deleted" message should be displayed and the corresponding vehicle should be removed from the table
 	@TRANS-592
 	Scenario Outline: Verify that car is successfully deleted and deleted message is displayed
 		Given The user logged in as "<userType>"
 		And the user navigates to "Fleet" "Vehicles"
-		And User hovers over on ... at the end of each row in the table
 		When User clicks on delete vehicle button
 		And User confirms delete by clicking yes
 		Then car is succesfully deleted and deleted message is displayed
