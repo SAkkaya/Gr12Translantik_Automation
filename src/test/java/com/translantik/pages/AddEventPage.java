@@ -40,5 +40,7 @@ public class AddEventPage extends BasePage {
     @FindBy (xpath = "//div[@class='controls recurrence-subview-control recurrence-subview-control__items']/div[3]")
     public List<WebElement> endsOccurance;
 
+   @FindBy(xpath = "//span[@class='color']")
+   public List<WebElement>colorsUrgencyLevel;
 
 }

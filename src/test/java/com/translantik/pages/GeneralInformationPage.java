@@ -1,6 +1,8 @@
 
+
 package com.translantik.pages;
 
+import com.translantik.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,17 +36,20 @@ public class GeneralInformationPage extends BasePage{
     @FindBy(xpath = "//h5/span")
     public WebElement pageHeader;
 
-    @FindBy(css = ".add-filter-button")
+    @FindBy(xpath = "//a[@class=\"add-filter-button\"]")
     public WebElement addFilterButton;
 
-    @FindBy(css = "[for='ui-multiselect-0-0-option-2'] > span")
-    public WebElement driverFilterButton;
+    @FindBy(id = "ui-multiselect-0-0-option-2")
+    public WebElement driverCheckbox;
 
-    @FindBy(css = ".filter-item-hint > span")
+    @FindBy(id = "ui-multiselect-0-0-option-3")
+    public WebElement locationCheckbox;
+
+    @FindBy(xpath = "//*[@id=\"grid-custom-entity-grid-1584742414\"]/div[1]/div/span/div[3]/div[2]/div/div[1]/ul")
     public List<WebElement> DriverDropDownMenuList;
 
-    @FindBy(css = ".filter-item-hint > span")
-    public WebElement DriverDropDownMenu;
+    @FindBy(css = ".filter-criteria-selector")
+    public WebElement DropDownMenu;
 
     @FindBy(css = ".btn-block > .btn")
     public WebElement DropDownButton;
@@ -58,20 +63,68 @@ public class GeneralInformationPage extends BasePage{
     @FindBy(xpath = "//div[@class='control-group attribute-row']")
     public List<WebElement> generalIfoPageEvents;
 
+    @FindBy(css = "[data-value='1']")
+    public WebElement contains;
+
+    @FindBy(css = "[data-value='2']")
+    public WebElement doesNotContain;
+
+    @FindBy(css = "[data-value='3']")
+    public WebElement isEqualTo;
+
+    @FindBy(css = "[data-value='4']")
+    public WebElement startsWith;
+
+    @FindBy(css = "[data-value='5']")
+    public WebElement EndsWith;
+
+    @FindBy(css = "[data-value='6']")
+    public WebElement isAnyOf;
+
+    @FindBy(css = "[data-value='7']")
+    public WebElement isNotAnyOf;
+
+    @FindBy(css = "[data-value='8']")
+    public WebElement isEmpty;
+
+    @FindBy(css = "[data-value='9']")
+    public WebElement isNotEmpty;
+
+    @FindBy(xpath = "//div[@class='filter-item oro-drop']/div[1]")
+    public WebElement filterAllButton;
+
+    @FindBy(xpath = "//a[@class='dropdown-item choice-value']")
+    public List<WebElement> filterTypes;
+
 
     public void DriverDropDownSet(){
         addFilterButton.click();
-        driverFilterButton.click();
+        driverCheckbox.click();
+    }
+
+    public void LocationDropDownSet(){
+        addFilterButton.click();
+        locationCheckbox.click();
     }
 
     public void sendValueAndFilter(String value, String method){
-        DriverDropDownMenu.click();
+        DropDownMenu.click();
         DropDownButton.click();
         driver.findElement(By.cssSelector("[data-value='"+method+"']")).click();
         filterValue.sendKeys(value);
     }
 
+    public void methodSelect(String method){
+        DropDownMenu.click();
+        driver.findElement(By.cssSelector("[data-value='"+method+"']")).click();
+    }
 
+    public WebElement getdataColumns(String dataColumns){
+        String css = "[data-value='"+dataColumns+"']";
+        return Driver.get().findElement(By.cssSelector(css));
+    }
+
+    // something
 
     /*
     public String getProperty(String info){
