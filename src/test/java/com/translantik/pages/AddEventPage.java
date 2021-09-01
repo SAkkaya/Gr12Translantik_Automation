@@ -41,6 +41,6 @@ public class AddEventPage extends BasePage {
     public List<WebElement> endsOccurance;
 
    @FindBy(xpath = "//span[@class='color']")
-   public List<WebElement>colorsUrgencyLevel;
+   public List<WebElement> colorsUrgencyLevel1;
 
 }

@@ -57,14 +57,14 @@ public class TRANS_537stepDefs {
 
 
 
-
+/*
     @When("the user navigates to {string} {string}")
     public void the_user_navigates_to(String tab, String module) {
 
         BrowserUtils.waitFor (2);
         new DashboardPage().navigateToModule(tab, module);
     }
-
+*/
     @When("the user click manage filters and  select Driver checkbox")
     public void the_user_click_manage_filters_and_select_Driver_checkbox() {
         FleetVehiclePage fleetVehiclePage = new FleetVehiclePage ();
