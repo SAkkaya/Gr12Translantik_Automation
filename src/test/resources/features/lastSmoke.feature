@@ -14,7 +14,7 @@ Feature:
 	#
 	#4-User can  remove all "filterings" by using the reset button
 	# *5- All user types can perform filtering actions*
-	# 6- Application supports multiple filtering of columns
+	# 6- Application supports multiple filtering of columns1
 	@TRANS-559 @TRANS-603 @EU5GR12
 	Scenario Outline: User can apply filtering for each of the data columns on the page
 		  Given the "<usertype>" user is logged in
