@@ -233,11 +233,18 @@ public class AllCarsStepDefs  {
         }
 
 
-
-
-
-
     }
 
+    @Then("the user enters the informations {int} and {int}")
+    public void the_user_enters_the_informations_and(Integer int1, Integer int2) {
+        new FleetVehiclePage().subFilterBox1.sendKeys(String.valueOf(int1));
+        new FleetVehiclePage().subFilterBox2.sendKeys(String.valueOf(int2));
+        new FleetVehiclePage().updateButton.click();
+        new FleetVehiclePage().waitUntilLoaderScreenDisappear();
+    }
+    @Then("the user should see the correct results from {string} {string} {int} {int}")
+    public void the_user_should_see_the_correct_results_from(String string, String string2, Integer int1, Integer int2) {
+        new FleetVehiclePage().checkFilteringResults(string,string2,int1,int2);
+    }
 
 }
