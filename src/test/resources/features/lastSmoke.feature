@@ -157,7 +157,7 @@ Feature:
 	Scenario Outline: Last Odometer Between Filtering
 		    Given the user is on the login page
 		    When the user logged in as "<userType>"
-		    And the user navigates to "Fleet", "Vehicles"
+		    And the user navigates2 to "Fleet", "Vehicles"
 		    Then the user select the "Last Odometer", "between" filtering type
 		    And the user enters the informations <first> and <last>
 		    And the user should see the correct results from "Last Odometer" "between" <first> <last>
