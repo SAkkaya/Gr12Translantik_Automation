@@ -246,5 +246,20 @@ public class AllCarsStepDefs  {
     public void the_user_should_see_the_correct_results_from(String string, String string2, Integer int1, Integer int2) {
         new FleetVehiclePage().checkFilteringResults(string,string2,int1,int2);
     }
+    @When("the user navigates2 to {string}, {string}")
+    public void the_user_navigates2_to(String tabName, String moduleName) {
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.waitUntilLoaderScreenDisappear();
+        BrowserUtils.waitForPageToLoad(15);
+        try{
+            dashboardPage.addEventClose.click();
+        }catch (NoSuchElementException exception){
+            System.out.println("Did not open the add event");
+        }
+        dashboardPage.navigateToModule(tabName, moduleName);
+        new FleetVehiclePage().waitUntilLoaderScreenDisappear();
+
+    }
+
 
 }
