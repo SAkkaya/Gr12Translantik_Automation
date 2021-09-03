@@ -74,7 +74,7 @@ Feature:
 	Scenario Outline: Halil - 538 - After filtering each method, table should displays corresponding data related to selected method
 		    Given the user is on the login page
 		    And the user enters the "<user>" and "UserUser123"
-		    When the user navigates to "Fleet", "Vehicles"
+		    When the user navigates to "Fleet" "Vehicles"
 		    Then the user should be able to filtering "Tags"
 		    And after "<each>" method filtering and after choose "<value>" user should see the filtered data on the table
 		
