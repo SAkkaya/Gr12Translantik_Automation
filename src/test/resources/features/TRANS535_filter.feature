@@ -1,10 +1,10 @@
 Feature:
 
-
+  @smoke
   Scenario Outline: Columns should provide methods
     Given the user is on the login page
     And the user enters the "<user>" and "UserUser123"
-    When the user navigates to "Fleet", "Vehicles"
+    When the user navigates to "Fleet" "Vehicles"
     Then the user should be able to filtering "Immatriculation Date"
     And the user should be able to another filtering "First Contract Date"
     Then the "Immatriculation Date" should provide following methods
@@ -50,7 +50,7 @@ Feature:
   Scenario Outline: After Filtering Immatriculation Date Verify Execution Of Methods
     Given the user is on the login page
     And the user enters the "<user>" and "UserUser123"
-    When the user navigates to "Fleet", "Vehicles"
+    When the user navigates to "Fleet" "Vehicles"
     Then the user should be able to filtering "First Contract Date"
     And after the filter "First Contract Date" "<each>" method user should see the filtered data on the table
 
